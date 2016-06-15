@@ -45,7 +45,7 @@ public class ModeloTabelaPedidosEspera extends AbstractTableModel implements Run
                  Pedido pedido = (Pedido) pedidos.get( rowIndex );
          switch( columnIndex ) {
              case 0: return pedido.getNome();
-             case 1: return pedido.getTempoEsperando();
+             case 1: return pedido.getTempoMaximoDeEspera();
          }
          return null;
     }

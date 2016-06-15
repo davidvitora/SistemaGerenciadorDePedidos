@@ -19,6 +19,7 @@ public class Pedido{
     private long tempoInicial;
     private long tempoEsperando;
     private long tempoMaximoDeEspera;
+    private long tempoMaximoDePreparo;
     private boolean Atrazado;
     
     public Pedido(ItemDoMenu prato){
@@ -28,7 +29,7 @@ public class Pedido{
         tempoEsperando = 0;
         Atrazado = false;
         tempoMaximoDeEspera = calcularTempoMaximoDeEspera(prato.getTempoDePreparo());
-        
+        tempoMaximoDePreparo = (long) prato.getTempoDePreparo();
     }
     
     public long calcularTempoMaximoDeEspera(double tempoDePreparo){
@@ -117,6 +118,20 @@ public class Pedido{
      */
     public void setTempoMaximoDeEspera(long tempoMaximoDeEspera) {
         this.tempoMaximoDeEspera = tempoMaximoDeEspera;
+    }
+
+    /**
+     * @return the tempoMaximoDePreparo
+     */
+    public long getTempoMaximoDePreparo() {
+        return tempoMaximoDePreparo;
+    }
+
+    /**
+     * @param tempoMaximoDePreparo the tempoMaximoDePreparo to set
+     */
+    public void setTempoMaximoDePreparo(long tempoMaximoDePreparo) {
+        this.tempoMaximoDePreparo = tempoMaximoDePreparo;
     }
    
 }

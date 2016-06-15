@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import restaurante.entidades.ItemDoMenu;
 import restaurante.entidades.ListaDeItemDoMenu;
 import restaurante.entidades.ListaDePedidosEspera;
+import restaurante.entidades.ListaDePreparo;
 import restaurante.entidades.Pedido;
 import restaurante.modelotabela.ModeloTabelaPedidosEspera;
 /**
@@ -47,7 +48,7 @@ public class NovoJFrame extends javax.swing.JFrame {
         menuLabel = new javax.swing.JLabel();
         pedidosEntreguesLabel = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        filaDeEsperaTabela1 = new javax.swing.JTable();
+        tabelaListaDePreparo = new javax.swing.JTable();
         retirarButton = new javax.swing.JButton();
         inserirButton = new javax.swing.JButton();
 
@@ -63,10 +64,12 @@ public class NovoJFrame extends javax.swing.JFrame {
             }
         ));
         lP = new restaurante.entidades.ListaDePedidosEspera();
+        listaDePreparo = new ListaDePreparo(lP.getListadePedidos());
         THlP = new Thread(lP);
         filaDeEsperaTabela.setModel(lP.getModeloTabela());
         filaDeEsperaTabela.getColumnModel().getColumn(0).setHeaderValue("Prato");
         filaDeEsperaTabela.getColumnModel().getColumn(1).setHeaderValue("Tempo");
+        tabelaListaDePreparo.setModel(listaDePreparo.getModeloTabela());
         jScrollPane1.setViewportView(filaDeEsperaTabela);
         if (filaDeEsperaTabela.getColumnModel().getColumnCount() > 0) {
             filaDeEsperaTabela.getColumnModel().getColumn(0).setResizable(false);
@@ -128,7 +131,7 @@ public class NovoJFrame extends javax.swing.JFrame {
 
         pedidosEntreguesLabel.setText("PEDIDOS ENTREGUES");
 
-        filaDeEsperaTabela1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaListaDePreparo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -155,7 +158,7 @@ public class NovoJFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(filaDeEsperaTabela1);
+        jScrollPane4.setViewportView(tabelaListaDePreparo);
 
         retirarButton.setText("Retirar");
 
@@ -188,15 +191,15 @@ public class NovoJFrame extends javax.swing.JFrame {
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addComponent(menuLabel)
-                                        .addGap(0, 190, Short.MAX_VALUE)))
-                                .addGap(18, 18, 18)
+                                        .addGap(0, 268, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(pedidosEntreguesLabel)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 369, Short.MAX_VALUE))))
+                        .addGap(44, 593, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,14 +215,14 @@ public class NovoJFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 6, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(retirarButton)
                     .addComponent(inserirButton))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -275,7 +278,6 @@ public class NovoJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel filaDeEsperaLabel;
     private javax.swing.JTable filaDeEsperaTabela;
-    private javax.swing.JTable filaDeEsperaTabela1;
     private javax.swing.JButton inserirButton;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -286,9 +288,11 @@ public class NovoJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel pedidosEntreguesLabel;
     private javax.swing.JTable pedidosEntreguesTabela;
     private javax.swing.JButton retirarButton;
+    private javax.swing.JTable tabelaListaDePreparo;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
     public ListaDePedidosEspera lP;
     public ListaDeItemDoMenu lI;
     public Thread THlP;
+    public ListaDePreparo listaDePreparo;
 }

@@ -22,8 +22,8 @@ public class PedidosList extends ArrayList implements Runnable{
         Pedido pedido;
         for(int i = 0; i < size(); i++){
             pedido = (Pedido) get(i);
-            pedido.setTempoEsperando((System.currentTimeMillis() / 1000) - pedido.getTempoInicial());
-            if(pedido.getTempoEsperando() > pedido.getTempoMaximoDeEspera()){
+            pedido.setTempoMaximoDeEspera(pedido.getTempoMaximoDeEspera() - 1);
+            if(pedido.getTempoEsperando() <= 0 ){
                 pedido.setAtrazado(true);
             }
         }

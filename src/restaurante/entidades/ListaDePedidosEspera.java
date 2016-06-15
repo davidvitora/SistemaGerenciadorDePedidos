@@ -19,7 +19,6 @@ import restaurante.modelotabela.ModeloTabelaPedidosEspera;
 public class  ListaDePedidosEspera implements Runnable{
     List<Pedido> pedidos = new PedidosList();
     private javax.swing.table.TableModel modeloTabela = new ModeloTabelaPedidosEspera(getListadePedidos());
-    private javax.swing.JTable filaDeEsperaTabela;
     ItemDoMenu item = new ItemDoMenu(1, "Macarronada", 2.50, 30);
     Pedido pedido = new Pedido(item);
     Thread thpedidos = new Thread((Runnable) pedidos);
@@ -49,7 +48,7 @@ public class  ListaDePedidosEspera implements Runnable{
     public void run() {
         while(true){
             try {
-                thpedidos.sleep(100);
+                thpedidos.sleep(1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(ListaDePedidosEspera.class.getName()).log(Level.SEVERE, null, ex);
             }
