@@ -5,9 +5,6 @@
  */
 package restaurante.entidades;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author David .V
@@ -21,6 +18,7 @@ public class Pedido{
     private long tempoMaximoDeEspera;
     private long tempoMaximoDePreparo;
     private boolean Atrazado;
+    private long seconds;
     
     public Pedido(ItemDoMenu prato){
         this.prato = prato;
@@ -109,15 +107,16 @@ public class Pedido{
     /**
      * @return the tempoMaximoDeEspera
      */
-    public long getTempoMaximoDeEspera() {
-        return tempoMaximoDeEspera;
+    public String getTempoMaximoDeEspera() {
+        return  tempoMaximoDeEspera +":"+ seconds;
     }
 
     /**
      * @param tempoMaximoDeEspera the tempoMaximoDeEspera to set
      */
-    public void setTempoMaximoDeEspera(long tempoMaximoDeEspera) {
+    public void setTempoMaximoDeEspera(long tempoMaximoDeEspera, long seconds) {
         this.tempoMaximoDeEspera = tempoMaximoDeEspera;
+        this.seconds = seconds;
     }
 
     /**

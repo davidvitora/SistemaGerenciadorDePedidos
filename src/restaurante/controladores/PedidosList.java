@@ -6,10 +6,7 @@
 package restaurante.controladores;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import restaurante.entidades.ItemDoMenu;
 import restaurante.entidades.Pedido;
 
 /**
@@ -17,12 +14,25 @@ import restaurante.entidades.Pedido;
  * @author David .V
  */
 public class PedidosList extends ArrayList implements Runnable{
+    private long seconds = 0;
+    public ItemDoMenu prato;
+    
+    
+    public long setTime(){
+        return seconds-1;
+    }
     
     public void atualizaTempoFilaDeEspera(){
         Pedido pedido;
-        for(int i = 0; i < size(); i++){
-            pedido = (Pedido) get(i);
-            pedido.setTempoMaximoDeEspera(pedido.getTempoMaximoDeEspera() - 1);
+        for (Object my : this) {
+            pedido = (Pedido) my;
+            if(seconds==0){
+                seconds = 59;
+                pedido.setTempoMaximoDeEspera((long) (prato.getTempoDePreparo()/2), seconds);
+            }
+            else{
+             pedido.setTempoMaximoDeEspera((long) (prato.getTempoDePreparo()/2) - 1,setTime());
+            }
             if(pedido.getTempoEsperando() <= 0 ){
                 pedido.setAtrazado(true);
             }
