@@ -18,17 +18,26 @@ import restaurante.modelotabela.ModeloTabelaPedidosPreparando;
  */
 public class ListaDePreparo{
     public PreparoList listaDePreparo;
-    private javax.swing.table.TableModel modeloTabela;
+    private ModeloTabelaPedidosPreparando modeloTabela;
     Thread thModeloTabela;
+    Thread thControleDeCozinheiros;
     
     public ListaDePreparo(List pedidos){
         this.listaDePreparo = new  PreparoList((PedidosList) pedidos);
         this.modeloTabela = new ModeloTabelaPedidosPreparando(getListaDePreparo());
         this.thModeloTabela = new Thread((Runnable) getModeloTabela());
+        thControleDeCozinheiros = new Thread((Runnable) getListaDePreparo());
     }
     
     public void verificarListaDePreparo(){
-        listaDePreparo.controleDeCozinheiros();
+        try{
+            /* Realiza função para definir pedidos para cozinheiros ociosos e verificar se algum terminou*/
+            thControleDeCozinheiros.run();
+            System.out.println("Controle de cozinheiros realizado");
+        }catch(Exception e){
+            e.getStackTrace();
+        }
+        modeloTabela.updateTable();
         thModeloTabela.run();
     }
 
@@ -57,7 +66,7 @@ public class ListaDePreparo{
      * @param modeloTabela the modeloTabela to set
      */
     public void setModeloTabela(javax.swing.table.TableModel modeloTabela) {
-        this.modeloTabela = modeloTabela;
+        this.modeloTabela = (ModeloTabelaPedidosPreparando) modeloTabela;
     }
     
     

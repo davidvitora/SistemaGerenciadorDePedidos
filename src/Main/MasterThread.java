@@ -8,6 +8,7 @@ package Main;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import restaurante.controladores.PreparoList;
 import restaurante.entidades.ListaDeItemDoMenu;
 import restaurante.entidades.ListaDePedidosEspera;
 import restaurante.entidades.ListaDePreparo;
@@ -40,7 +41,6 @@ public final class MasterThread implements Runnable{
             }
             getListaDePreparo().verificarListaDePreparo();
             THListaDePedidosEspera.run();
-            
         }  
     }
 

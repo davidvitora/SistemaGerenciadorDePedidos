@@ -6,6 +6,7 @@
 package restaurante.controladores;
 
 import java.util.ArrayList;
+import java.util.List;
 import restaurante.entidades.Cozinheiro;
 import restaurante.entidades.Pedido;
 
@@ -13,42 +14,43 @@ import restaurante.entidades.Pedido;
  *
  * @author David .V
  */
-public class PreparoList{
+public class PreparoList extends ArrayList implements Runnable{
     PedidosList pedidos;
-    ArrayList cozinheiros = new ArrayList();
     Cozinheiro aux;
-    Cozinheiro  coum;
-    Cozinheiro codois;
-    Cozinheiro cotres;
-    Cozinheiro coquatro;
+    public static final Cozinheiro coum = new Cozinheiro(1, "Paulo", true);
+    public static Cozinheiro codois = new Cozinheiro(2, "Pedro", true);
+    public static Cozinheiro cotres = new Cozinheiro(3, "João", true);
+    public static Cozinheiro coquatro = new Cozinheiro(4, "Chef Pepino", true);
     
     public PreparoList(PedidosList pedidos){
-        coum = new Cozinheiro(1, "Ratatouille", true);
-        codois = new Cozinheiro(2, "Ratatouille", true);
-        cotres = new Cozinheiro(3, "Ratatouille", true);
-        coquatro = new Cozinheiro(4, "Ratatouille", true);
-        cozinheiros.add(coum);
-        cozinheiros.add(codois);
-        cozinheiros.add(cotres);
-        cozinheiros.add(coquatro);
         this.pedidos = pedidos;
-    }
-    
-    public ArrayList getListaDeCozinheiros(){
-        return cozinheiros;
+        this.add(coum);
+        this.add(codois);
+        this.add(cotres);
+        this.add(coquatro);
+        
     }
     
     public void controleDeCozinheiros(){
-        for(int i = 0; i < cozinheiros.size(); i++){
-           aux = (Cozinheiro) cozinheiros.get(i);
-           aux.getPedidoPreparando().setTempoMaximoDePreparo(aux.getPedidoPreparando().getTempoMaximoDePreparo() -1);
-           if(aux.getPedidoPreparando().getTempoMaximoDePreparo() == 0 && aux.isLivre() == false){
+        for(int i = 0; i < this.size(); i++){
+           aux = (Cozinheiro) this.get(i);
+           aux.getPedidoPreparando().setTempoMaximoDePreparo((aux.getPedidoPreparando().getTempoMaximoDePreparo()) - 1);
+           if(aux.getPedidoPreparando().getTempoMaximoDePreparo() <= 0 && aux.isLivre() == false && aux.getPedidoPreparando() != aux.PLivre){
                aux.setLivre(true);
            }
-           //if(aux.isLivre() && pedidos.isEmpty() == false){
-            //   aux.setPedidoPreparando((Pedido) pedidos.get(0));
-            //   pedidos.remove(0);
-           //}
+           if(aux.isLivre() && pedidos.isEmpty() == false){
+               aux.setPedidoPreparando((Pedido) pedidos.get(0));
+               System.out.println("Colocando o pedido " + pedidos.get(0).toString() + "Para o cozinheiro" + aux.getNome());
+               pedidos.remove(0);
+               aux.setLivre(false);
+           }
+            System.out.println("Cozinheiro" + aux.getNome() + "Preparando: " + aux.getPedidoPreparando().getNome() + "No tempo: " + aux.getPedidoPreparando().getTempoMaximoDePreparo() );
         }
     }
+
+    @Override
+    public void run() {
+        controleDeCozinheiros();
+    }
+
 }

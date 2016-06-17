@@ -56,16 +56,14 @@ public class Restaurante extends javax.swing.JFrame {
         filaDeEsperaTabela.setModel(masterThread.getlP().getModeloTabela());
         filaDeEsperaTabela.getColumnModel().getColumn(0).setHeaderValue("Prato");
         filaDeEsperaTabela.getColumnModel().getColumn(1).setHeaderValue("Tempo");
-        //menuTabela.setModel(masterThread.getlI().getModeloTabela());
-        //menuTabela.getColumnModel().getColumn(0).setHeaderValue("Prato");
-        //menuTabela.getColumnModel().getColumn(1).setHeaderValue("Tempo Medio de preparo");
-        //menuTabela.getColumnModel().getColumn(2).setHeaderValue("Valor");
-        tabelaListaDePreparo.setModel(masterThread.getListaDePreparo().getModeloTabela());
-        tabelaListaDePreparo.getColumnModel().getColumn(0).setHeaderValue("Cozinheiro");
-        tabelaListaDePreparo.getColumnModel().getColumn(1).setHeaderValue("Pedido");
-        tabelaListaDePreparo.getColumnModel().getColumn(2).setHeaderValue("Tempo");
+        menuTabela.setModel(masterThread.getlI().getModeloTabela());
+        menuTabela.getColumnModel().getColumn(0).setHeaderValue("Prato");
+        menuTabela.getColumnModel().getColumn(1).setHeaderValue("Tempo Medio de preparo");
+        menuTabela.getColumnModel().getColumn(2).setHeaderValue("Valor");
         THMasterThread = new Thread(masterThread);
         THMasterThread.start();
+        menuTabela.setModel(masterThread.getlI().getModeloTabela());
+        menuTabela.getColumnModel().getColumn(0).setHeaderValue("Teste");
         jScrollPane1.setViewportView(filaDeEsperaTabela);
 
         menuTabela.setModel(new javax.swing.table.DefaultTableModel(
@@ -83,15 +81,16 @@ public class Restaurante extends javax.swing.JFrame {
 
         tabelaListaDePreparo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Title 1", "a", "nulldawdaw"
+
             }
         ));
+        tabelaListaDePreparo.setModel(masterThread.getListaDePreparo().getModeloTabela());
+        tabelaListaDePreparo.getColumnModel().getColumn(0).setHeaderValue("Cozinheiro");
+        tabelaListaDePreparo.getColumnModel().getColumn(1).setHeaderValue("Pedido");
+        tabelaListaDePreparo.getColumnModel().getColumn(2).setHeaderValue("Tempo");
         jScrollPane3.setViewportView(tabelaListaDePreparo);
 
         jButton1.setText("jButton1");
@@ -109,7 +108,7 @@ public class Restaurante extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
@@ -139,7 +138,7 @@ public class Restaurante extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       ItemDoMenu item = new ItemDoMenu(1, "Macarronada", 2.50, 30);
+       ItemDoMenu item = new ItemDoMenu(1, "Macarronada", 2.50, 10);
        Pedido pedido = new Pedido(item);
        masterThread.getlP().addPedido(pedido);
     }//GEN-LAST:event_jButton1ActionPerformed

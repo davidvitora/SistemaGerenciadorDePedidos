@@ -27,7 +27,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jScrollPane3" min="-2" pref="211" max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" min="-2" pref="250" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -82,52 +82,13 @@
                 <Column editable="true" title="Title 4" type="java.lang.Object"/>
               </Table>
             </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="masterThread = new MasterThread();&#xd;&#xa;filaDeEsperaTabela.setModel(masterThread.getlP().getModeloTabela());&#xd;&#xa;filaDeEsperaTabela.getColumnModel().getColumn(0).setHeaderValue(&quot;Prato&quot;);&#xd;&#xa;filaDeEsperaTabela.getColumnModel().getColumn(1).setHeaderValue(&quot;Tempo&quot;);&#xd;&#xa;//menuTabela.setModel(masterThread.getlI().getModeloTabela());&#xd;&#xa;//menuTabela.getColumnModel().getColumn(0).setHeaderValue(&quot;Prato&quot;);&#xd;&#xa;//menuTabela.getColumnModel().getColumn(1).setHeaderValue(&quot;Tempo Medio de preparo&quot;);&#xd;&#xa;//menuTabela.getColumnModel().getColumn(2).setHeaderValue(&quot;Valor&quot;);&#xd;&#xa;tabelaListaDePreparo.setModel(masterThread.getListaDePreparo().getModeloTabela());&#xd;&#xa;tabelaListaDePreparo.getColumnModel().getColumn(0).setHeaderValue(&quot;Cozinheiro&quot;);&#xd;&#xa;tabelaListaDePreparo.getColumnModel().getColumn(1).setHeaderValue(&quot;Pedido&quot;);&#xd;&#xa;tabelaListaDePreparo.getColumnModel().getColumn(2).setHeaderValue(&quot;Tempo&quot;);&#xd;&#xa;THMasterThread = new Thread(masterThread);&#xd;&#xa;THMasterThread.start();"/>
-          </AuxValues>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JTable" name="menuTabela">
-          <Properties>
-            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="4" rowCount="4">
-                <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                <Column editable="true" title="Title 4" type="java.lang.Object"/>
-              </Table>
-            </Property>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane3">
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JTable" name="tabelaListaDePreparo">
-          <Properties>
-            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="3" rowCount="4">
-                <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                <Column editable="true" title="a" type="java.lang.Object"/>
-                <Column editable="true" title="nulldawdaw" type="java.lang.Object"/>
-              </Table>
-            </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -150,6 +111,57 @@
             </Property>
           </Properties>
           <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="masterThread = new MasterThread();&#xd;&#xa;filaDeEsperaTabela.setModel(masterThread.getlP().getModeloTabela());&#xd;&#xa;filaDeEsperaTabela.getColumnModel().getColumn(0).setHeaderValue(&quot;Prato&quot;);&#xd;&#xa;filaDeEsperaTabela.getColumnModel().getColumn(1).setHeaderValue(&quot;Tempo&quot;);&#xd;&#xa;menuTabela.setModel(masterThread.getlI().getModeloTabela());&#xd;&#xa;menuTabela.getColumnModel().getColumn(0).setHeaderValue(&quot;Prato&quot;);&#xd;&#xa;menuTabela.getColumnModel().getColumn(1).setHeaderValue(&quot;Tempo Medio de preparo&quot;);&#xd;&#xa;menuTabela.getColumnModel().getColumn(2).setHeaderValue(&quot;Valor&quot;);&#xd;&#xa;THMasterThread = new Thread(masterThread);&#xd;&#xa;THMasterThread.start();&#xd;&#xa;menuTabela.setModel(masterThread.getlI().getModeloTabela());&#xd;&#xa;menuTabela.getColumnModel().getColumn(0).setHeaderValue(&quot;Teste&quot;);&#xd;&#xa;"/>
+            <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Restaurante_filaDeEsperaTabela"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTable" name="menuTabela">
+          <Properties>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="4" rowCount="4">
+                <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                <Column editable="true" title="Title 4" type="java.lang.Object"/>
+              </Table>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Restaurante_menuTabela"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTable" name="tabelaListaDePreparo">
+          <Properties>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="0" rowCount="0"/>
+            </Property>
+            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+              <TableColumnModel selectionModel="0"/>
+            </Property>
+            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="tabelaListaDePreparo.setModel(masterThread.getListaDePreparo().getModeloTabela());&#xd;&#xa;tabelaListaDePreparo.getColumnModel().getColumn(0).setHeaderValue(&quot;Cozinheiro&quot;);&#xd;&#xa;tabelaListaDePreparo.getColumnModel().getColumn(1).setHeaderValue(&quot;Pedido&quot;);&#xd;&#xa;tabelaListaDePreparo.getColumnModel().getColumn(2).setHeaderValue(&quot;Tempo&quot;);"/>
             <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Restaurante_tabelaListaDePreparo"/>
           </AuxValues>
         </Component>

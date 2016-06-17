@@ -29,18 +29,18 @@ public class ModeloTabelaPedidosPreparando extends AbstractTableModel implements
     }
     
     public int getRowCount() {
-        return preparoList.getListaDeCozinheiros().size();
+        return 4;
     }
     public int getColumnCount() {
         return nomeColunas.length;
     }
     
     public Object getValueAt(int rowIndex, int columnIndex) {
-                 Cozinheiro item = (Cozinheiro) preparoList.getListaDeCozinheiros().get( rowIndex );
+                 Cozinheiro item = (Cozinheiro) preparoList.get( rowIndex );
          switch( columnIndex ) {
              case 0: return item.getNome();
              case 1: return item.getPedidoPreparando().getNome();
-             case 2: return item.getPedidoPreparando().getTempoMaximoDeEspera();
+             case 2: return item.getPedidoPreparando().getTempoMaximoDePreparo();
          }
          return null;
     }

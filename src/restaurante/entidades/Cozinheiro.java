@@ -5,11 +5,13 @@
  */
 package restaurante.entidades;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author David .V
  */
-public class Cozinheiro {
+public class Cozinheiro extends ArrayList{
     private int id;
     private String nome;
     private Pedido pedidoPreparando;
@@ -17,8 +19,8 @@ public class Cozinheiro {
     private final ItemDoMenu itemDoMenu;
     public final Pedido PLivre;
     
-    public Cozinheiro(int id, String Nome, boolean livre){
-        this.itemDoMenu = new ItemDoMenu(0, "Livre", 0.0 , 0.0);
+    public Cozinheiro(int id, String nome, boolean livre){
+        this.itemDoMenu = new ItemDoMenu(0, "Livre", 0.0 ,(long) 00);
         this.PLivre = new Pedido(itemDoMenu);
         this.id = id;
         this.nome = nome;

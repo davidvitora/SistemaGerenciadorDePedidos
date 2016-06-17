@@ -15,7 +15,7 @@ public class ItemDoMenu {
     private double preco;
     private double tempoDePreparo;
     
-    public ItemDoMenu(int id, String nome, double preco, double tempoDePreparo){
+    public ItemDoMenu(int id, String nome, double preco, long tempoDePreparo){
         this.id = id;
         this.nome = nome;
         this.preco = preco;
@@ -49,4 +49,6 @@ public class ItemDoMenu {
     public double getTempoDePreparo() {
         return tempoDePreparo;
     }
+    
+    
 }
