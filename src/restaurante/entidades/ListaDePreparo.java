@@ -16,27 +16,20 @@ import restaurante.modelotabela.ModeloTabelaPedidosPreparando;
  *
  * @author David .V
  */
-public class ListaDePreparo implements Runnable{
-    private PreparoList listaDePreparo;
-    private javax.swing.table.TableModel modeloTabela = new ModeloTabelaPedidosPreparando(getListaDePreparo());
-    Thread thListaDePreparo = new Thread(getListaDePreparo());
-    Thread thModeloTabela = new Thread((Runnable) getModeloTabela());
+public class ListaDePreparo{
+    public PreparoList listaDePreparo;
+    private javax.swing.table.TableModel modeloTabela;
+    Thread thModeloTabela;
     
     public ListaDePreparo(List pedidos){
         this.listaDePreparo = new  PreparoList((PedidosList) pedidos);
+        this.modeloTabela = new ModeloTabelaPedidosPreparando(getListaDePreparo());
+        this.thModeloTabela = new Thread((Runnable) getModeloTabela());
     }
-
-    @Override
-    public void run() {
-        while(true){
-            try {
-                thListaDePreparo.sleep(1000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(ListaDePreparo.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            thListaDePreparo.run();
-            thModeloTabela.run();
-        }
+    
+    public void verificarListaDePreparo(){
+        listaDePreparo.controleDeCozinheiros();
+        thModeloTabela.run();
     }
 
     /**

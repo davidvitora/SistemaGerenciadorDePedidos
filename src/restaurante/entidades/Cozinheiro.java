@@ -15,7 +15,7 @@ public class Cozinheiro {
     private Pedido pedidoPreparando;
     private boolean livre;
     private final ItemDoMenu itemDoMenu;
-    private final Pedido PLivre;
+    public final Pedido PLivre;
     
     public Cozinheiro(int id, String Nome, boolean livre){
         this.itemDoMenu = new ItemDoMenu(0, "Livre", 0.0 , 0.0);

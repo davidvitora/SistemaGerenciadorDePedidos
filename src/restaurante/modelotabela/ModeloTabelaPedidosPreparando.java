@@ -6,12 +6,8 @@
 package restaurante.modelotabela;
 
 import javax.swing.table.AbstractTableModel;
-import restaurante.controladores.MenuList;
-import restaurante.controladores.PedidosList;
 import restaurante.controladores.PreparoList;
 import restaurante.entidades.Cozinheiro;
-import restaurante.entidades.ItemDoMenu;
-import restaurante.entidades.Pedido;
 
 /**
  *

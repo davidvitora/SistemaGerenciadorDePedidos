@@ -5,10 +5,7 @@
  */
 package restaurante.entidades;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import restaurante.controladores.PedidosList;
 import restaurante.modelotabela.ModeloTabelaPedidosEspera;
 
@@ -46,21 +43,8 @@ public class  ListaDePedidosEspera implements Runnable{
     
     @Override
     public void run() {
-        while(true){
-            try {
-                thpedidos.sleep(1000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(ListaDePedidosEspera.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                thpedidos.run();
-            for (Pedido pedidoF : pedidos) {
-                if(pedidoF.isAtrazado()){
-                    
-                }
-            }
-                thmodelo.run();
-            
-        }
+        thpedidos.run();
+        thmodelo.run();
     }
 
     /**
