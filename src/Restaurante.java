@@ -89,7 +89,7 @@ public class Restaurante extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "nulldawdaw"
+                "Title 1", "a", "nulldawdaw"
             }
         ));
         jScrollPane3.setViewportView(tabelaListaDePreparo);
