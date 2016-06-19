@@ -18,7 +18,7 @@ import restaurante.entidades.Pedido;
  * @author David .V
  */
 public class ModeloTabelaPedidosEspera extends AbstractTableModel implements Runnable{
-
+    
     private String[] nomeColunas = {"Pratos", "Tempo"};
     private PedidosEsperandoList pedidos;
     // construtor padrão criando um arraylist de alunos
@@ -45,7 +45,8 @@ public class ModeloTabelaPedidosEspera extends AbstractTableModel implements Run
                  Pedido pedido = (Pedido) pedidos.get( rowIndex );
          switch( columnIndex ) {
              case 0: return pedido.getNome();
-             case 1: return pedido.getTempoMaximoDeEspera();
+             case 1: return (pedido.getTempoMaximoDeEspera()/60) + ":" + (pedido.getTempoMaximoDeEspera()%60);
+                     
          }
          return null;
     }

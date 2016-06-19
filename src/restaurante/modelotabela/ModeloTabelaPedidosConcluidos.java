@@ -38,7 +38,7 @@ public class ModeloTabelaPedidosConcluidos extends AbstractTableModel implements
                Pedido item = (Pedido) pedidosConcluidos.get( rowIndex );
          switch( columnIndex ) {
              case 0: return item.getNome();
-             case 1: return item.getTempoTotal();
+             case 1: return (item.getTempoTotal()/60) +":"+ (item.getTempoTotal()%60);
          }
          return null;
         

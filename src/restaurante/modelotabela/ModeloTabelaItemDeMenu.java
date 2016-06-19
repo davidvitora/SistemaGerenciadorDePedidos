@@ -7,9 +7,7 @@ package restaurante.modelotabela;
 
 import javax.swing.table.AbstractTableModel;
 import restaurante.modelos.listas.MenuList;
-import restaurante.modelos.listas.PedidosEsperandoList;
 import restaurante.entidades.ItemDoMenu;
-import restaurante.entidades.Pedido;
 
 /**
  *
@@ -18,6 +16,7 @@ import restaurante.entidades.Pedido;
 public class ModeloTabelaItemDeMenu extends AbstractTableModel implements Runnable{
     private String[] nomeColunas = {"id","Pratos", "Tempo de preparo", "Preço"};
     private MenuList listaMenu;
+    private double tempoDePreparo;
     // construtor padrão criando um arraylist de alunos
     public ModeloTabelaItemDeMenu(){
         this.listaMenu = new MenuList();
@@ -43,8 +42,8 @@ public class ModeloTabelaItemDeMenu extends AbstractTableModel implements Runnab
          switch( columnIndex ) {
              case 0: return item.getId();
              case 1: return item.getNome();
-             case 2: return item.getPreco();
-             case 3: return item.getTempoDePreparo();
+             case 2: return item.getTempoDePreparo();
+             case 3: return item.getPreco();
          }
          return null;
     }

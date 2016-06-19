@@ -41,7 +41,7 @@ public class ModeloTabelaPedidosPreparando extends AbstractTableModel implements
              case 0: return item.getNome();
              case 1: return item.getPedidoPreparando().getNome();
              case 2: if(item.isLivre() == false){
-                 return item.getPedidoPreparando().getTempoMaximoDePreparo();
+                 return (item.getPedidoPreparando().getTempoMaximoDePreparo())/60 +":"+(item.getPedidoPreparando().getTempoMaximoDePreparo())%60;
                 }else {return "";} 
              
          }
