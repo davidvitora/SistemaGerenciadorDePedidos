@@ -17,19 +17,17 @@ public class Pedido{
     public ItemDoMenu prato;
     private String nome;
     private long tempoInicial;
-    private long tempoEsperando;
     private long tempoMaximoDeEspera;
     private long tempoMaximoDePreparo;
-    private boolean Atrazado;
+    private long tempoTotal;
     
     public Pedido(ItemDoMenu prato){
         this.prato = prato;
         this.nome = prato.getNome();
         tempoInicial = System.currentTimeMillis() / 1000;
-        tempoEsperando = 0;
-        Atrazado = false;
         tempoMaximoDeEspera = calcularTempoMaximoDeEspera(prato.getTempoDePreparo());
         tempoMaximoDePreparo = (long) prato.getTempoDePreparo();
+        this.tempoTotal = 0;
     }
     
     public long calcularTempoMaximoDeEspera(double tempoDePreparo){
@@ -63,35 +61,7 @@ public class Pedido{
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    /**
-     * @return the tempoEsperando
-     */
-    public long getTempoEsperando() {
-        return tempoEsperando;
-    }
-
-    /**
-     * @param tempoEsperando the tempoEsperando to set
-     */
-    public void setTempoEsperando(long tempoEsperando) {
-        this.tempoEsperando = tempoEsperando;
-    }
-
-    /**
-     * @return the Atrazado
-     */
-    public boolean isAtrazado() {
-        return Atrazado;
-    }
-
-    /**
-     * @param Atrazado the Atrazado to set
-     */
-    public void setAtrazado(boolean Atrazado) {
-        this.Atrazado = Atrazado;
-    }
-
+    
     /**
      * @return the tempoInicial
      */
@@ -132,6 +102,20 @@ public class Pedido{
      */
     public void setTempoMaximoDePreparo(long tempoMaximoDePreparo) {
         this.tempoMaximoDePreparo = tempoMaximoDePreparo;
+    }
+
+    /**
+     * @return the tempoTotal
+     */
+    public long getTempoTotal() {
+        return tempoTotal;
+    }
+
+    /**
+     * @param tempoTotal the tempoTotal to set
+     */
+    public void setTempoTotal(long tempoTotal) {
+        this.tempoTotal = tempoTotal;
     }
    
 }

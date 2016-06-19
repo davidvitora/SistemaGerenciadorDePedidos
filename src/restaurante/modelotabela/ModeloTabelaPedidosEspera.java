@@ -10,7 +10,7 @@ import java.util.List;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
-import restaurante.controladores.PedidosList;
+import restaurante.modelos.listas.PedidosEsperandoList;
 import restaurante.entidades.Pedido;
 
 /**
@@ -20,13 +20,13 @@ import restaurante.entidades.Pedido;
 public class ModeloTabelaPedidosEspera extends AbstractTableModel implements Runnable{
 
     private String[] nomeColunas = {"Pratos", "Tempo"};
-    private PedidosList pedidos;
+    private PedidosEsperandoList pedidos;
     // construtor padrão criando um arraylist de alunos
     public ModeloTabelaPedidosEspera(){
-        this.pedidos = new PedidosList();
+        this.pedidos = new PedidosEsperandoList();
     }
     // construtor que adiciona a lista passada pelo método ao alunos
-    public ModeloTabelaPedidosEspera(PedidosList pedidos){
+    public ModeloTabelaPedidosEspera(PedidosEsperandoList pedidos){
         this.pedidos = pedidos;
         super.fireTableDataChanged();
     }

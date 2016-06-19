@@ -1,5 +1,8 @@
 
 import Main.MasterThread;
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import restaurante.entidades.ItemDoMenu;
 import restaurante.entidades.Pedido;
 
@@ -34,10 +37,17 @@ public class Restaurante extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         filaDeEsperaTabela = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        menuTabela = new javax.swing.JTable();
+        tabelaDoMenu = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         tabelaListaDePreparo = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tabelaPedidosConcluidos = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,17 +66,17 @@ public class Restaurante extends javax.swing.JFrame {
         filaDeEsperaTabela.setModel(masterThread.getlP().getModeloTabela());
         filaDeEsperaTabela.getColumnModel().getColumn(0).setHeaderValue("Prato");
         filaDeEsperaTabela.getColumnModel().getColumn(1).setHeaderValue("Tempo");
-        menuTabela.setModel(masterThread.getlI().getModeloTabela());
-        menuTabela.getColumnModel().getColumn(0).setHeaderValue("Prato");
-        menuTabela.getColumnModel().getColumn(1).setHeaderValue("Tempo Medio de preparo");
-        menuTabela.getColumnModel().getColumn(2).setHeaderValue("Valor");
+        tabelaDoMenu.setModel(masterThread.getlI().getModeloTabela());
+        tabelaDoMenu.getColumnModel().getColumn(0).setHeaderValue("Prato");
+        tabelaDoMenu.getColumnModel().getColumn(1).setHeaderValue("Tempo Medio de preparo");
+        tabelaDoMenu.getColumnModel().getColumn(2).setHeaderValue("Valor");
         THMasterThread = new Thread(masterThread);
         THMasterThread.start();
-        menuTabela.setModel(masterThread.getlI().getModeloTabela());
-        menuTabela.getColumnModel().getColumn(0).setHeaderValue("Teste");
+        tabelaDoMenu.setModel(masterThread.getlI().getModeloTabela());
+        tabelaDoMenu.getColumnModel().getColumn(0).setHeaderValue("Teste");
         jScrollPane1.setViewportView(filaDeEsperaTabela);
 
-        menuTabela.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaDoMenu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -74,10 +84,25 @@ public class Restaurante extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "id", "Title 2", "Title 3", "Título 4"
             }
         ));
-        jScrollPane2.setViewportView(menuTabela);
+        tabelaDoMenu.setModel(masterThread.getlI().getModeloTabela());
+        tabelaDoMenu.getColumnModel().getColumn(0).setHeaderValue("Id");
+        tabelaDoMenu.getColumnModel().getColumn(1).setHeaderValue("Prato");
+        tabelaDoMenu.getColumnModel().getColumn(2).setHeaderValue("Tempo de preparo");
+        tabelaDoMenu.getColumnModel().getColumn(3).setHeaderValue("Preco");
+        tabelaDoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaDoMenuMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tabelaDoMenu);
+        if (tabelaDoMenu.getColumnModel().getColumnCount() > 0) {
+            tabelaDoMenu.getColumnModel().getColumn(0).setMinWidth(20);
+            tabelaDoMenu.getColumnModel().getColumn(0).setPreferredWidth(20);
+            tabelaDoMenu.getColumnModel().getColumn(0).setMaxWidth(20);
+        }
 
         tabelaListaDePreparo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,10 +118,54 @@ public class Restaurante extends javax.swing.JFrame {
         tabelaListaDePreparo.getColumnModel().getColumn(2).setHeaderValue("Tempo");
         jScrollPane3.setViewportView(tabelaListaDePreparo);
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Realizar Pedido");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        tabelaPedidosConcluidos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Pedido", "Tempo total"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabelaPedidosConcluidos.setModel(masterThread.getTabelaDePedidosConcluidos().getModeloTabela());
+        tabelaPedidosConcluidos.getColumnModel().getColumn(0).setHeaderValue("Pedido");
+        tabelaPedidosConcluidos.getColumnModel().getColumn(1).setHeaderValue("Tempo total");
+        jScrollPane4.setViewportView(tabelaPedidosConcluidos);
+        if (tabelaPedidosConcluidos.getColumnModel().getColumnCount() > 0) {
+            tabelaPedidosConcluidos.getColumnModel().getColumn(0).setResizable(false);
+            tabelaPedidosConcluidos.getColumnModel().getColumn(1).setResizable(false);
+            tabelaPedidosConcluidos.getColumnModel().getColumn(1).setPreferredWidth(30);
+        }
+
+        jLabel1.setText("Lista de pedidos em espera:");
+
+        jLabel2.setText("Lista de cozinheiros:");
+
+        jLabel3.setText("Menu:");
+
+        jLabel4.setText("Lista de pedidos entregues:");
+
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -109,39 +178,89 @@ public class Restaurante extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1))
+                        .addGap(70, 70, 70)
+                        .addComponent(jButton2))
+                    .addComponent(jLabel2)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(244, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(68, 68, 68)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(0, 60, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jButton1)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(81, 81, 81))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButton2))))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       ItemDoMenu item = new ItemDoMenu(1, "Macarronada", 2.50, 10);
-       Pedido pedido = new Pedido(item);
-       masterThread.getlP().addPedido(pedido);
+        if(tabelaDoMenu.isColumnSelected(1)){
+            Double aux = Double.parseDouble(tabelaDoMenu.getModel().getValueAt(tabelaDoMenu.getSelectedRow(), 2).toString());
+            ItemDoMenu item = new ItemDoMenu(Integer.parseInt(tabelaDoMenu.getModel().getValueAt(tabelaDoMenu.getSelectedRow(), 0).toString()), tabelaDoMenu.getModel().getValueAt(tabelaDoMenu.getSelectedRow(), 1).toString(), Double.parseDouble(tabelaDoMenu.getModel().getValueAt(tabelaDoMenu.getSelectedRow(), 0).toString()),aux.longValue());
+            Pedido pedido = new Pedido(item);
+            masterThread.getlP().addPedido(pedido);
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecione o nome de um item da lista para fazer pedido");
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tabelaDoMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaDoMenuMouseClicked
+        
+        
+    }//GEN-LAST:event_tabelaDoMenuMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        int retorno = fileChooser.showOpenDialog(null);
+
+        if (retorno == JFileChooser.APPROVE_OPTION) {
+          File file = fileChooser.getSelectedFile();
+          if(file.canExecute()){
+              System.out.println(file.getTotalSpace());
+          }
+        } else {
+          // dialogo cancelado
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,11 +300,18 @@ public class Restaurante extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable filaDeEsperaTabela;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable menuTabela;
+    private javax.swing.JScrollPane jScrollPane4;
+    public javax.swing.JTable tabelaDoMenu;
     private javax.swing.JTable tabelaListaDePreparo;
+    private javax.swing.JTable tabelaPedidosConcluidos;
     // End of variables declaration//GEN-END:variables
     public MasterThread masterThread;
     public Thread THMasterThread;

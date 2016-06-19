@@ -6,7 +6,7 @@
 package restaurante.modelotabela;
 
 import javax.swing.table.AbstractTableModel;
-import restaurante.controladores.PreparoList;
+import restaurante.modelos.listas.PreparoList;
 import restaurante.entidades.Cozinheiro;
 
 /**
@@ -40,7 +40,10 @@ public class ModeloTabelaPedidosPreparando extends AbstractTableModel implements
          switch( columnIndex ) {
              case 0: return item.getNome();
              case 1: return item.getPedidoPreparando().getNome();
-             case 2: return item.getPedidoPreparando().getTempoMaximoDePreparo();
+             case 2: if(item.isLivre() == false){
+                 return item.getPedidoPreparando().getTempoMaximoDePreparo();
+                }else {return "";} 
+             
          }
          return null;
     }

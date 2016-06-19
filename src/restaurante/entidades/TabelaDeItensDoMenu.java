@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import restaurante.controladores.MenuList;
+import restaurante.modelos.listas.MenuList;
 import restaurante.modelotabela.ModeloTabelaItemDeMenu;
 import restaurante.modelotabela.ModeloTabelaPedidosEspera;
 
@@ -17,15 +17,13 @@ import restaurante.modelotabela.ModeloTabelaPedidosEspera;
  *
  * @author David .V
  */
-public class  ListaDeItemDoMenu{
+public class  TabelaDeItensDoMenu{
     List<ItemDoMenu> menu = new MenuList();
     private javax.swing.table.TableModel modeloTabela = new ModeloTabelaItemDeMenu(getListaMenu());
     private javax.swing.JTable filaDeEsperaTabela;
-    ItemDoMenu item = new ItemDoMenu(1, "Macarronada", 2.50, 30);
     Thread thmodelo = new Thread((Runnable) modeloTabela);
     
-    public ListaDeItemDoMenu(){
-        this.menu.add(item);      
+    public TabelaDeItensDoMenu(){    
     }
     
     public MenuList getListaMenu(){

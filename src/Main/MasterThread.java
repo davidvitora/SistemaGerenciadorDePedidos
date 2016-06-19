@@ -8,26 +8,29 @@ package Main;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import restaurante.controladores.PreparoList;
-import restaurante.entidades.ListaDeItemDoMenu;
-import restaurante.entidades.ListaDePedidosEspera;
-import restaurante.entidades.ListaDePreparo;
+import restaurante.entidades.TabelaDeItensDoMenu;
+import restaurante.entidades.TabelaDePedidosEspera;
+import restaurante.entidades.TabelaDaListaDePreparo;
+import restaurante.entidades.TabelaDePedidosConcluidos;
 
 /**
  *
  * @author David .V
  */
 public final class MasterThread implements Runnable{
-    private ListaDePedidosEspera lP;
-    private ListaDeItemDoMenu lI;
-    private ListaDePreparo listaDePreparo;
+    private TabelaDePedidosEspera lP;
+    private TabelaDeItensDoMenu lI;
+    private TabelaDaListaDePreparo listaDePreparo;
     private final Thread THListaDePedidosEspera;
+    private TabelaDePedidosConcluidos tabelaDePedidosConcluidos;
     
     public MasterThread(){
-        this.lP = new ListaDePedidosEspera();
+        this.lP = new TabelaDePedidosEspera();
         THListaDePedidosEspera = new Thread(getlP());
-        this.listaDePreparo = new ListaDePreparo((List)getlP().getListadePedidos());
-        this.lI = new ListaDeItemDoMenu();
+        this.tabelaDePedidosConcluidos = new TabelaDePedidosConcluidos();
+        this.listaDePreparo = new TabelaDaListaDePreparo((List)getlP().getListadePedidos(), getTabelaDePedidosConcluidos().getPedidosConcluidos());
+        this.lI = new TabelaDeItensDoMenu();
+        
     }
 
     
@@ -41,49 +44,64 @@ public final class MasterThread implements Runnable{
             }
             getListaDePreparo().verificarListaDePreparo();
             THListaDePedidosEspera.run();
+            getTabelaDePedidosConcluidos().atualizaTabela();
         }  
     }
 
     /**
      * @return the lP
      */
-    public ListaDePedidosEspera getlP() {
+    public TabelaDePedidosEspera getlP() {
         return lP;
     }
 
     /**
      * @param lP the lP to set
      */
-    public void setlP(ListaDePedidosEspera lP) {
+    public void setlP(TabelaDePedidosEspera lP) {
         this.lP = lP;
     }
 
     /**
      * @return the lI
      */
-    public ListaDeItemDoMenu getlI() {
+    public TabelaDeItensDoMenu getlI() {
         return lI;
     }
 
     /**
      * @param lI the lI to set
      */
-    public void setlI(ListaDeItemDoMenu lI) {
+    public void setlI(TabelaDeItensDoMenu lI) {
         this.lI = lI;
     }
 
     /**
      * @return the listaDePreparo
      */
-    public ListaDePreparo getListaDePreparo() {
+    public TabelaDaListaDePreparo getListaDePreparo() {
         return listaDePreparo;
     }
 
     /**
      * @param listaDePreparo the listaDePreparo to set
      */
-    public void setListaDePreparo(ListaDePreparo listaDePreparo) {
+    public void setListaDePreparo(TabelaDaListaDePreparo listaDePreparo) {
         this.listaDePreparo = listaDePreparo;
+    }
+
+    /**
+     * @return the tabelaDePedidosConcluidos
+     */
+    public TabelaDePedidosConcluidos getTabelaDePedidosConcluidos() {
+        return tabelaDePedidosConcluidos;
+    }
+
+    /**
+     * @param tabelaDePedidosConcluidos the tabelaDePedidosConcluidos to set
+     */
+    public void setTabelaDePedidosConcluidos(TabelaDePedidosConcluidos tabelaDePedidosConcluidos) {
+        this.tabelaDePedidosConcluidos = tabelaDePedidosConcluidos;
     }
     
 }

@@ -4,16 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/David%20.V/Google%20Drive/Faculdade/Ciência%20da%20computação/Programação%20II/Projeto%20final/Repositório/Restaurante/src/restaurante/entidades/ItemDoMenu.java</file>
-            <file>file:/C:/Users/David%20.V/Google%20Drive/Faculdade/Ciência%20da%20computação/Programação%20II/Projeto%20final/Repositório/Restaurante/src/restaurante/modelotabela/ModeloTabelaPedidosPreparando.java</file>
-            <file>file:/C:/Users/David%20.V/Google%20Drive/Faculdade/Ciência%20da%20computação/Programação%20II/Projeto%20final/Repositório/Restaurante/src/restaurante/entidades/ListaDePreparo.java</file>
-            <file>file:/C:/Users/David%20.V/Google%20Drive/Faculdade/Ciência%20da%20computação/Programação%20II/Projeto%20final/Repositório/Restaurante/src/restaurante/controladores/PedidosList.java</file>
-            <file>file:/C:/Users/David%20.V/Google%20Drive/Faculdade/Ciência%20da%20computação/Programação%20II/Projeto%20final/Repositório/Restaurante/src/restaurante/entidades/ListaDePedidosEspera.java</file>
-            <file>file:/C:/Users/David%20.V/Google%20Drive/Faculdade/Ciência%20da%20computação/Programação%20II/Projeto%20final/Repositório/Restaurante/src/restaurante/entidades/Pedido.java</file>
+            <file>file:/C:/Users/David%20.V/Google%20Drive/Faculdade/Ciência%20da%20computação/Programação%20II/Projeto%20final/Repositório/Restaurante/src/restaurante/entidades/TabelaDePedidosEspera.java</file>
+            <file>file:/C:/Users/David%20.V/Google%20Drive/Faculdade/Ciência%20da%20computação/Programação%20II/Projeto%20final/Repositório/Restaurante/src/restaurante/entidades/TabelaDePedidosConcluidos.java</file>
+            <file>file:/C:/Users/David%20.V/Google%20Drive/Faculdade/Ciência%20da%20computação/Programação%20II/Projeto%20final/Repositório/Restaurante/src/restaurante/modelos/listas/MenuList.java</file>
+            <file>file:/C:/Users/David%20.V/Google%20Drive/Faculdade/Ciência%20da%20computação/Programação%20II/Projeto%20final/Repositório/Restaurante/src/restaurante/modelos/listas/PreparoList.java</file>
             <file>file:/C:/Users/David%20.V/Google%20Drive/Faculdade/Ciência%20da%20computação/Programação%20II/Projeto%20final/Repositório/Restaurante/src/restaurante/entidades/Cozinheiro.java</file>
             <file>file:/C:/Users/David%20.V/Google%20Drive/Faculdade/Ciência%20da%20computação/Programação%20II/Projeto%20final/Repositório/Restaurante/src/Restaurante.java</file>
             <file>file:/C:/Users/David%20.V/Google%20Drive/Faculdade/Ciência%20da%20computação/Programação%20II/Projeto%20final/Repositório/Restaurante/src/Main/MasterThread.java</file>
-            <file>file:/C:/Users/David%20.V/Google%20Drive/Faculdade/Ciência%20da%20computação/Programação%20II/Projeto%20final/Repositório/Restaurante/src/restaurante/modelotabela/ModeloTabelaPedidosEspera.java</file>
-            <file>file:/C:/Users/David%20.V/Google%20Drive/Faculdade/Ciência%20da%20computação/Programação%20II/Projeto%20final/Repositório/Restaurante/src/restaurante/controladores/PreparoList.java</file>
+            <file>file:/C:/Users/David%20.V/Google%20Drive/Faculdade/Ciência%20da%20computação/Programação%20II/Projeto%20final/Repositório/Restaurante/src/restaurante/modelos/listas/PedidosConcluidosList.java</file>
+            <file>file:/C:/Users/David%20.V/Google%20Drive/Faculdade/Ciência%20da%20computação/Programação%20II/Projeto%20final/Repositório/Restaurante/src/restaurante/entidades/TabelaDeItensDoMenu.java</file>
         </group>
     </open-files>
 </project-private>

@@ -8,22 +8,23 @@ package restaurante.entidades;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import restaurante.controladores.PedidosList;
-import restaurante.controladores.PreparoList;
+import restaurante.modelos.listas.PedidosConcluidosList;
+import restaurante.modelos.listas.PedidosEsperandoList;
+import restaurante.modelos.listas.PreparoList;
 import restaurante.modelotabela.ModeloTabelaPedidosPreparando;
 
 /**
  *
  * @author David .V
  */
-public class ListaDePreparo{
+public class TabelaDaListaDePreparo{
     public PreparoList listaDePreparo;
     private ModeloTabelaPedidosPreparando modeloTabela;
     Thread thModeloTabela;
     Thread thControleDeCozinheiros;
     
-    public ListaDePreparo(List pedidos){
-        this.listaDePreparo = new  PreparoList((PedidosList) pedidos);
+    public TabelaDaListaDePreparo(List pedidos, PedidosConcluidosList pedidosConcluidos){
+        this.listaDePreparo = new  PreparoList((PedidosEsperandoList) pedidos, pedidosConcluidos);
         this.modeloTabela = new ModeloTabelaPedidosPreparando(getListaDePreparo());
         this.thModeloTabela = new Thread((Runnable) getModeloTabela());
         thControleDeCozinheiros = new Thread((Runnable) getListaDePreparo());

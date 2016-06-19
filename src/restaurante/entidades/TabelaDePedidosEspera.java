@@ -6,35 +6,25 @@
 package restaurante.entidades;
 
 import java.util.List;
-import restaurante.controladores.PedidosList;
+import restaurante.modelos.listas.PedidosEsperandoList;
 import restaurante.modelotabela.ModeloTabelaPedidosEspera;
 
 /**
  *
  * @author David .V
  */
-public class  ListaDePedidosEspera implements Runnable{
-    List<Pedido> pedidos = new PedidosList();
+public class  TabelaDePedidosEspera implements Runnable{
+    List<Pedido> pedidos = new PedidosEsperandoList();
     private javax.swing.table.TableModel modeloTabela = new ModeloTabelaPedidosEspera(getListadePedidos());
-    ItemDoMenu item = new ItemDoMenu(1, "Macarronada", 2.50, 30);
-    Pedido pedido = new Pedido(item);
     Thread thpedidos = new Thread((Runnable) pedidos);
     Thread thmodelo = new Thread((Runnable) modeloTabela);
     
-    public ListaDePedidosEspera(){
-        this.pedidos.add(pedido);      
+    public TabelaDePedidosEspera(){      
     }
+
     
-    public long getTempoDecorrido(){
-        return pedido.getTempoEsperando();
-    }
-    
-    public  String getNomeDoPedido(){
-        return pedido.getNome();
-    }
-    
-    public PedidosList getListadePedidos(){
-        return (PedidosList)pedidos;
+    public PedidosEsperandoList getListadePedidos(){
+        return (PedidosEsperandoList)pedidos;
     }
     
     public void addPedido(Pedido pedido){
