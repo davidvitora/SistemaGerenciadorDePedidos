@@ -6,7 +6,6 @@
 package restaurante.modelos.listas;
 
 import java.util.ArrayList;
-import java.util.List;
 import restaurante.entidades.Cozinheiro;
 import restaurante.entidades.Pedido;
 

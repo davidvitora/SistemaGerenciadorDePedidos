@@ -6,8 +6,6 @@
 package restaurante.entidades;
 
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import restaurante.modelos.listas.PedidosConcluidosList;
 import restaurante.modelos.listas.PedidosEsperandoList;
 import restaurante.modelos.listas.PreparoList;

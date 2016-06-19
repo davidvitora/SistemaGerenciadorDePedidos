@@ -5,11 +5,7 @@
  */
 package restaurante.modelotabela;
 
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.TableModel;
 import restaurante.modelos.listas.PedidosEsperandoList;
 import restaurante.entidades.Pedido;
 
@@ -45,7 +41,38 @@ public class ModeloTabelaPedidosEspera extends AbstractTableModel implements Run
                  Pedido pedido = (Pedido) pedidos.get( rowIndex );
          switch( columnIndex ) {
              case 0: return pedido.getNome();
-             case 1: return (pedido.getTempoMaximoDeEspera()/60) + ":" + (pedido.getTempoMaximoDeEspera()%60);
+             case 1:
+                    if(pedido.getTempoMaximoDeEspera()%60 ==0 && pedido.getTempoMaximoDeEspera()/60 == 0){
+                        return "00:00";
+                    }
+                    if(pedido.getTempoMaximoDeEspera()%60 <=0 && pedido.getTempoMaximoDeEspera()/60 <= 0){    
+                        if(pedido.getTempoMaximoDeEspera()/60 >-10 && pedido.getTempoMaximoDeEspera()%60 <=-10){
+                             return ("-0"+Math.abs(pedido.getTempoMaximoDeEspera()/60)) + ":" + Math.abs(pedido.getTempoMaximoDeEspera()%60);
+                         }
+                         else if(pedido.getTempoMaximoDeEspera()/60 >-10 && pedido.getTempoMaximoDeEspera()%60> -10){
+                             return ("-0"+Math.abs(pedido.getTempoMaximoDeEspera()/60)) + ":0" + Math.abs(pedido.getTempoMaximoDeEspera()%60);
+                         }
+                         else if(pedido.getTempoMaximoDeEspera()%60 >-10 && pedido.getTempoMaximoDeEspera()/60 <=-10){
+                             return ("-"+Math.abs(pedido.getTempoMaximoDeEspera()/60)) + ":0" + Math.abs(pedido.getTempoMaximoDeEspera()%60);
+                         }
+                         else if(pedido.getTempoMaximoDeEspera()%60 <=-10 && pedido.getTempoMaximoDeEspera()/60 <=-10)
+                         return ("-"+Math.abs(pedido.getTempoMaximoDeEspera()/60)) + ":" + Math.abs(pedido.getTempoMaximoDeEspera()%60);
+                        }
+                    
+                    
+                    
+                     if(pedido.getTempoMaximoDeEspera()/60 <10 && pedido.getTempoMaximoDeEspera()%60 >=10){
+                         return ("0"+Math.abs(pedido.getTempoMaximoDeEspera()/60)) + ":" + Math.abs(pedido.getTempoMaximoDeEspera()%60);
+                     }
+                     else if(pedido.getTempoMaximoDeEspera()/60 <10 && pedido.getTempoMaximoDeEspera()%60 <10){
+                         return ("0"+Math.abs(pedido.getTempoMaximoDeEspera()/60)) + ":0" + Math.abs(pedido.getTempoMaximoDeEspera()%60);
+                     }
+                     else if(pedido.getTempoMaximoDeEspera()%60 <10 && pedido.getTempoMaximoDeEspera()/60 >=10){
+                         return (pedido.getTempoMaximoDeEspera()/60) + ":0" + Math.abs(pedido.getTempoMaximoDeEspera()%60);
+                     }
+                     return (pedido.getTempoMaximoDeEspera()/60) + ":" + Math.abs(pedido.getTempoMaximoDeEspera()%60);
+                     
+                     
                      
          }
          return null;

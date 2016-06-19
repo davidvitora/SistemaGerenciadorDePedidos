@@ -40,10 +40,21 @@ public class ModeloTabelaPedidosPreparando extends AbstractTableModel implements
          switch( columnIndex ) {
              case 0: return item.getNome();
              case 1: return item.getPedidoPreparando().getNome();
-             case 2: if(item.isLivre() == false){
-                 return (item.getPedidoPreparando().getTempoMaximoDePreparo())/60 +":"+(item.getPedidoPreparando().getTempoMaximoDePreparo())%60;
-                }else {return "";} 
-             
+             case 2: 
+                 if(item.isLivre() == false){
+                     if(item.getPedidoPreparando().getTempoMaximoDePreparo()/60 <10 && item.getPedidoPreparando().getTempoMaximoDePreparo()%60 >=10){
+                         return "0"+item.getPedidoPreparando().getTempoMaximoDePreparo()/60 +":"+Math.abs((item.getPedidoPreparando().getTempoMaximoDePreparo())%60);
+                     }
+                     else if(item.getPedidoPreparando().getTempoMaximoDePreparo()%60 <10 && item.getPedidoPreparando().getTempoMaximoDePreparo()/60 >=10){
+                         return item.getPedidoPreparando().getTempoMaximoDePreparo()/60 +":0"+Math.abs((item.getPedidoPreparando().getTempoMaximoDePreparo())%60);
+                     }
+                     else if(item.getPedidoPreparando().getTempoMaximoDePreparo()%60 <10 && item.getPedidoPreparando().getTempoMaximoDePreparo()/60 <10){
+                         return "0"+item.getPedidoPreparando().getTempoMaximoDePreparo()/60 +":0"+Math.abs((item.getPedidoPreparando().getTempoMaximoDePreparo())%60);
+                     } 
+                   
+                    return (item.getPedidoPreparando().getTempoMaximoDePreparo())/60 +":"+Math.abs((item.getPedidoPreparando().getTempoMaximoDePreparo())%60);
+                    }
+                 else {return "";} 
          }
          return null;
     }

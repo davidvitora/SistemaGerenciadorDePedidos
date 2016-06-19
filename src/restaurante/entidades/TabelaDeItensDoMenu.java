@@ -5,13 +5,9 @@
  */
 package restaurante.entidades;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import restaurante.modelos.listas.MenuList;
 import restaurante.modelotabela.ModeloTabelaItemDeMenu;
-import restaurante.modelotabela.ModeloTabelaPedidosEspera;
 
 /**
  *

@@ -16,9 +16,9 @@ public class MenuList extends ArrayList{
     
     
     public MenuList(){
-        ItemDoMenu item = new ItemDoMenu(1, "Macarronada", 8, 600);
+        ItemDoMenu item = new ItemDoMenu(1, "Macarronada", 8, 30);
         this.add(item);
-        item = new ItemDoMenu(2, "Batata frita", 5, 300);
+        item = new ItemDoMenu(2, "Batata frita", 5, 60);
         this.add(item);
         item = new ItemDoMenu(3, "Arroz com feijão", 8, 900);
         this.add(item);

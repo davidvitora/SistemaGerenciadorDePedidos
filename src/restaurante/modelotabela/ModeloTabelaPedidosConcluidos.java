@@ -7,7 +7,6 @@ package restaurante.modelotabela;
 
 import javax.swing.table.AbstractTableModel;
 import restaurante.modelos.listas.PedidosConcluidosList;
-import restaurante.entidades.Cozinheiro;
 import restaurante.entidades.Pedido;
 
 /**
@@ -38,7 +37,16 @@ public class ModeloTabelaPedidosConcluidos extends AbstractTableModel implements
                Pedido item = (Pedido) pedidosConcluidos.get( rowIndex );
          switch( columnIndex ) {
              case 0: return item.getNome();
-             case 1: return (item.getTempoTotal()/60) +":"+ (item.getTempoTotal()%60);
+             case 1: if((item.getTempoTotal()/60) <10 && item.getTempoTotal()%60 >=10){
+                        return ("0"+item.getTempoTotal()/60) +":"+ Math.abs((item.getTempoTotal()%60));
+                    } 
+                     else if(item.getTempoTotal()/60 <10 && item.getTempoTotal()%60 <10){
+                        return ("0"+item.getTempoTotal()/60) +":0"+ Math.abs((item.getTempoTotal()%60));
+                    }
+                     else if((item.getTempoTotal()%60) <10 && item.getTempoTotal()/60 >=10){
+                        return (item.getTempoTotal()/60) +":0"+ Math.abs((item.getTempoTotal()%60));
+                    }
+                     return (item.getTempoTotal()/60) +":"+ Math.abs((item.getTempoTotal()%60));
          }
          return null;
         
