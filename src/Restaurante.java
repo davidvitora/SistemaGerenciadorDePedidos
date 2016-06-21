@@ -221,7 +221,7 @@ public class Restaurante extends javax.swing.JFrame {
             Pedido pedido = new Pedido(item);
             masterThread.getlP().addPedido(pedido);
         }else{
-            JOptionPane.showMessageDialog(null, "Selecione o nome de um item da lista para fazer pedido");
+            JOptionPane.showMessageDialog(null, "Selecione um item da lista para realizar o pedido");
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
