@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package restaurante.entidades;
+package restaurante.controladores;
 
 import java.util.List;
+import restaurante.entidades.Pedido;
 import restaurante.modelos.listas.PedidosEsperandoList;
 import restaurante.modelotabela.ModeloTabelaPedidosEspera;
 

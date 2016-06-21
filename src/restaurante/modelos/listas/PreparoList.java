@@ -43,12 +43,16 @@ public class PreparoList extends ArrayList implements Runnable{
             if(aux.getPedidoPreparando().getTempoMaximoDePreparo() <= 0 && aux.isLivre() == false && aux.getPedidoPreparando() != aux.PLivre){
                 pedidosConcluidos.addPedidoConcluido(aux.getPedidoPreparando());
                 aux.setLivre(true);
+                System.out.println("O cozinheiro " + aux.getNome() + " está livre.");
             }
             /* Se o cozinheiro estiver livre e tiver itens da lista de pedidos esperando, o primeiro item da lista de pedidos será designado para ele e removido da lista de pedidos esperando */
             if(aux.isLivre() && pedidos.isEmpty() == false){
                 aux.setPedidoPreparando((Pedido) pedidos.get(0));
+                Pedido pedido = (Pedido) pedidos.get(0);
+                System.out.println("O pedido " + pedido.getNome() + " foi enviado para o cozinheiro " + aux.getNome());
                 pedidos.remove(0);
                 aux.setLivre(false);
+                
             }
         }
     }

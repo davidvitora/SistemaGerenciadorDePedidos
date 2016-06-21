@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package restaurante.entidades;
+package restaurante.controladores;
 
 import restaurante.modelos.listas.PedidosConcluidosList;
 import restaurante.modelotabela.ModeloTabelaPedidosConcluidos;

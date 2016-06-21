@@ -8,10 +8,10 @@ package Main;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import restaurante.entidades.TabelaDeItensDoMenu;
-import restaurante.entidades.TabelaDePedidosEspera;
-import restaurante.entidades.TabelaDaListaDePreparo;
-import restaurante.entidades.TabelaDePedidosConcluidos;
+import restaurante.controladores.TabelaDeItensDoMenu;
+import restaurante.controladores.TabelaDePedidosEspera;
+import restaurante.controladores.TabelaDaListaDePreparo;
+import restaurante.controladores.TabelaDePedidosConcluidos;
 
 /**
  *

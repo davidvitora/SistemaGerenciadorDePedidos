@@ -42,8 +42,18 @@ public class ModeloTabelaItemDeMenu extends AbstractTableModel implements Runnab
          switch( columnIndex ) {
              case 0: return item.getId();
              case 1: return item.getNome();
-             case 2: return item.getTempoDePreparo();
+             case 2: if((item.getTempoDePreparo()/60) <10 && item.getTempoDePreparo()%60 >=10){
+                        return ("0"+item.getTempoDePreparo()/60) +":"+ Math.abs((item.getTempoDePreparo()%60));
+                    } 
+                     else if(item.getTempoDePreparo()/60 <10 && item.getTempoDePreparo()%60 <10){
+                        return ("0"+item.getTempoDePreparo()/60) +":0"+ Math.abs((item.getTempoDePreparo()%60));
+                    }
+                     else if((item.getTempoDePreparo()%60) <10 && item.getTempoDePreparo()/60 >=10){
+                        return (item.getTempoDePreparo()/60) +":0"+ Math.abs((item.getTempoDePreparo()%60));
+                    }
+                     return (item.getTempoDePreparo()/60) +":"+ Math.abs((item.getTempoDePreparo()%60));
              case 3: return item.getPreco();
+             case 4: return item.getTempoDePreparo();
          }
          return null;
     }
